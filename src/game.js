@@ -48,11 +48,24 @@ initializeScene = function()
     self.y -= dt * 5;
   }
 
-  text = TextSprite(3, 295, "hello world.");
+
+  messagebox = TextSprite(3, 295, "");
+  messagebox.messages = [ [0, "hello there."], [5, "what's up?"], [10, ""] ];
+  messagebox.update = function(self)
+  {
+    if(messageinfo = self.messages[0])
+    {
+      self.text = messageinfo[1].substring(0, (time-messageinfo[0]) * 4);
+      if(self.messages.length > 1 && time >= self.messages[1][0])
+      {
+        self.messages.shift();
+      }
+    }
+  }
 
   scene.push(bg);
   scene.push(player);
-  scene.push(text);
+  scene.push(messagebox);
 }
 
 // Called onload by the host page

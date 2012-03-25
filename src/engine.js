@@ -1,11 +1,10 @@
-// Constructs a sprite which updates and renders itself
 Sprite = function(_x, _y)
 {
   return {
     draw : function(self)
     {
       if(!self.image) { return; }
-      
+
       context.drawImage(self.image, self.x - self.width / 2, self.y - self.height / 2);
     },
 
@@ -18,6 +17,7 @@ Sprite = function(_x, _y)
     image: null,
   }
 }
+
 
 TextSprite = function(_x, _y, _text)
 {
